@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B4BC7962987619800C21130 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4BC7952987619800C21130 /* AppDelegate.swift */; };
+		3B4BC7982987619800C21130 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4BC7972987619800C21130 /* SceneDelegate.swift */; };
+		3B4BC79A2987619800C21130 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4BC7992987619800C21130 /* ViewController.swift */; };
+		3B4BC79D2987619800C21130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B4BC79B2987619800C21130 /* Main.storyboard */; };
+		3B4BC79F2987619A00C21130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B4BC79E2987619A00C21130 /* Assets.xcassets */; };
+		3B4BC7A22987619A00C21130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B4BC7A02987619A00C21130 /* LaunchScreen.storyboard */; };
+		3B4BC7A7298761A500C21130 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA122952C861002C7E4D /* InputManager.swift */; };
+		3B4BC7A8298761A700C21130 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA142952C8F1002C7E4D /* Profile.swift */; };
+		3B4BC7A9298761AA00C21130 /* ContactManageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA162952D10D002C7E4D /* ContactManageSystem.swift */; };
+		3B4BC7AA298761AC00C21130 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE1922953F044003C94B0 /* InputError.swift */; };
+		3B4BC7AB298761AC00C21130 /* OutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB374D09295AC31800A737ED /* OutputManager.swift */; };
 		3B7DEA132952C861002C7E4D /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA122952C861002C7E4D /* InputManager.swift */; };
 		3B7DEA152952C8F1002C7E4D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA142952C8F1002C7E4D /* Profile.swift */; };
 		3B7DEA172952D10D002C7E4D /* ContactManageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA162952D10D002C7E4D /* ContactManageSystem.swift */; };
@@ -28,6 +39,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B4BC7932987619700C21130 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4BC7952987619800C21130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B4BC7972987619800C21130 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3B4BC7992987619800C21130 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B4BC79C2987619800C21130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3B4BC79E2987619A00C21130 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B4BC7A12987619A00C21130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3B4BC7A32987619A00C21130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B7DEA122952C861002C7E4D /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		3B7DEA142952C8F1002C7E4D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		3B7DEA162952D10D002C7E4D /* ContactManageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManageSystem.swift; sourceTree = "<group>"; };
@@ -38,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3B4BC7902987619700C21130 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EB5EB1A32952BE4300752155 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,10 +74,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B4BC7942987619800C21130 /* ContactManagerUI */ = {
+			isa = PBXGroup;
+			children = (
+				3B4BC7952987619800C21130 /* AppDelegate.swift */,
+				3B4BC7972987619800C21130 /* SceneDelegate.swift */,
+				3B4BC7992987619800C21130 /* ViewController.swift */,
+				3B4BC79B2987619800C21130 /* Main.storyboard */,
+				3B4BC79E2987619A00C21130 /* Assets.xcassets */,
+				3B4BC7A02987619A00C21130 /* LaunchScreen.storyboard */,
+				3B4BC7A32987619A00C21130 /* Info.plist */,
+			);
+			path = ContactManagerUI;
+			sourceTree = "<group>";
+		};
 		EB5EB19D2952BE4300752155 = {
 			isa = PBXGroup;
 			children = (
 				EB5EB1A82952BE4300752155 /* ios-cantact-manager */,
+				3B4BC7942987619800C21130 /* ContactManagerUI */,
 				EB5EB1A72952BE4300752155 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				EB5EB1A62952BE4300752155 /* ios-cantact-manager */,
+				3B4BC7932987619700C21130 /* ContactManagerUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,6 +122,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3B4BC7922987619700C21130 /* ContactManagerUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B4BC7A62987619A00C21130 /* Build configuration list for PBXNativeTarget "ContactManagerUI" */;
+			buildPhases = (
+				3B4BC78F2987619700C21130 /* Sources */,
+				3B4BC7902987619700C21130 /* Frameworks */,
+				3B4BC7912987619700C21130 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ContactManagerUI;
+			productName = ContactManagerUI;
+			productReference = 3B4BC7932987619700C21130 /* ContactManagerUI.app */;
+			productType = "com.apple.product-type.application";
+		};
 		EB5EB1A52952BE4300752155 /* ios-cantact-manager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB5EB1AD2952BE4300752155 /* Build configuration list for PBXNativeTarget "ios-cantact-manager" */;
@@ -107,6 +166,9 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					3B4BC7922987619700C21130 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					EB5EB1A52952BE4300752155 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -126,11 +188,40 @@
 			projectRoot = "";
 			targets = (
 				EB5EB1A52952BE4300752155 /* ios-cantact-manager */,
+				3B4BC7922987619700C21130 /* ContactManagerUI */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		3B4BC7912987619700C21130 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B4BC7A22987619A00C21130 /* LaunchScreen.storyboard in Resources */,
+				3B4BC79F2987619A00C21130 /* Assets.xcassets in Resources */,
+				3B4BC79D2987619800C21130 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		3B4BC78F2987619700C21130 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B4BC7A7298761A500C21130 /* InputManager.swift in Sources */,
+				3B4BC7AA298761AC00C21130 /* InputError.swift in Sources */,
+				3B4BC7AB298761AC00C21130 /* OutputManager.swift in Sources */,
+				3B4BC7A8298761A700C21130 /* Profile.swift in Sources */,
+				3B4BC7A9298761AA00C21130 /* ContactManageSystem.swift in Sources */,
+				3B4BC79A2987619800C21130 /* ViewController.swift in Sources */,
+				3B4BC7962987619800C21130 /* AppDelegate.swift in Sources */,
+				3B4BC7982987619800C21130 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EB5EB1A22952BE4300752155 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,7 +237,85 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		3B4BC79B2987619800C21130 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B4BC79C2987619800C21130 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3B4BC7A02987619A00C21130 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B4BC7A12987619A00C21130 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		3B4BC7A42987619A00C21130 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ContactManagerUI/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jenna.ContactManagerUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B4BC7A52987619A00C21130 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ContactManagerUI/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jenna.ContactManagerUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		EB5EB1AB2952BE4300752155 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -283,6 +452,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3B4BC7A62987619A00C21130 /* Build configuration list for PBXNativeTarget "ContactManagerUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B4BC7A42987619A00C21130 /* Debug */,
+				3B4BC7A52987619A00C21130 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EB5EB1A12952BE4300752155 /* Build configuration list for PBXProject "ios-cantact-manager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
