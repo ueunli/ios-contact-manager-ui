@@ -10,6 +10,12 @@ import Foundation
 struct InputManager {
     private let splitInputCount = 3
     private let hyphenCount = 2
+
+    enum RegularExpressions: String {
+        case nameChecker = "^[a-zA-Z]*$"
+        case ageChecker = "^[0-9]{1,3}$"
+        case phoneNumberChecker = "^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$"
+    }
     
     func menuInput() throws -> String {
         let input = readLine()
@@ -35,25 +41,26 @@ struct InputManager {
         
         return splitInput
     }
-    
-    func checkUserInput(_ name: String, _ age: String, _ tel: String) throws {
-        let ageRegex = "^[0-9]{1,3}$"
-        let ageRegexTest = NSPredicate(format: "SELF MATCHES %@", ageRegex)
-        guard ageRegexTest.evaluate(with: age) else {
+
+    func isValidUserInput(string: String, type: RegularExpressions) -> Bool {
+        let isValid = string.range(of: type.rawValue,  options: .regularExpression) != nil
+        return isValid
+    }
+
+    func verifyUserInput(_ name: String, _ age: String, _ tel: String) throws {
+        guard isValidUserInput(string: name, type: RegularExpressions.nameChecker) else {
+            throw InputError.invalidName
+        }
+
+        guard isValidUserInput(string: age, type: RegularExpressions.ageChecker) else {
             throw InputError.invalidAge
         }
-        
-        guard (tel.filter { $0 == "-" }).count == hyphenCount else {
-            throw InputError.invalidTel
-        }
-        let filteredTel = tel.filter { $0 != "-" }
-        let telRegex = "^[0-9]{9,}$"
-        let telRegexTest = NSPredicate(format: "SELF MATCHES %@", telRegex)
-        guard telRegexTest.evaluate(with: filteredTel) else {
+
+        guard isValidUserInput(string: tel, type: RegularExpressions.phoneNumberChecker) else {
             throw InputError.invalidTel
         }
     }
-    
+
     func targetInput() throws -> String {
         let input = readLine()
         guard let input = input else {

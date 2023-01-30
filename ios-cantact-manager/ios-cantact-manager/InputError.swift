@@ -8,6 +8,7 @@
 import Foundation
 
 enum InputError: Error {
+    case invalidName
     case invalidAge
     case invalidTel
     case invalidInput

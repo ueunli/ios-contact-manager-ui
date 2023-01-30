@@ -60,7 +60,7 @@ struct ContactManageSystem {
             OutputManager.print(text: .inputInfo)
             let inputArray = try inputManager.parseUserInput()
             let (name, age ,tel) = (inputArray[0], inputArray[1], inputArray[2])
-            try inputManager.checkUserInput(name, age, tel)
+            try inputManager.verifyUserInput(name, age, tel)
             let profile = Profile(name: name, age: age, tel: tel)
             profiles.insert(profile)
             OutputManager.print(profile: profile)
