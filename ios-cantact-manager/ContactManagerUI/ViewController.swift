@@ -27,10 +27,13 @@ extension ViewController: UITableViewDataSource {
         let profile = profiles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
+
         content.text = "\(profile.name)(\(profile.age))"
         content.secondaryText = profile.tel
+        content.textProperties.font = content.secondaryTextProperties.font
         cell.contentConfiguration = content
         cell.accessoryType = .disclosureIndicator
+
         return cell
     }
 }
