@@ -24,10 +24,11 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let profile = profiles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = "이름(나이)"
-        content.secondaryText = "연락처"
+        content.text = "\(profile.name)(\(profile.age))"
+        content.secondaryText = profile.tel
         cell.contentConfiguration = content
         cell.accessoryType = .disclosureIndicator
         return cell
