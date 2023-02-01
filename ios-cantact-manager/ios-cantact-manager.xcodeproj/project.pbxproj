@@ -21,6 +21,7 @@
 		3B7DEA132952C861002C7E4D /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA122952C861002C7E4D /* InputManager.swift */; };
 		3B7DEA152952C8F1002C7E4D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA142952C8F1002C7E4D /* Profile.swift */; };
 		3B7DEA172952D10D002C7E4D /* ContactManageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA162952D10D002C7E4D /* ContactManageSystem.swift */; };
+		764D00F72989F40B00E5D75D /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 764D00F62989F40B00E5D75D /* .gitkeep */; };
 		EB1AE1932953F044003C94B0 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE1922953F044003C94B0 /* InputError.swift */; };
 		EB374D0A295AC31800A737ED /* OutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB374D09295AC31800A737ED /* OutputManager.swift */; };
 		EB5EB1AA2952BE4300752155 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EB1A92952BE4300752155 /* main.swift */; };
@@ -50,6 +51,7 @@
 		3B7DEA122952C861002C7E4D /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		3B7DEA142952C8F1002C7E4D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		3B7DEA162952D10D002C7E4D /* ContactManageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManageSystem.swift; sourceTree = "<group>"; };
+		764D00F62989F40B00E5D75D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		EB1AE1922953F044003C94B0 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		EB374D09295AC31800A737ED /* OutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputManager.swift; sourceTree = "<group>"; };
 		EB5EB1A62952BE4300752155 /* ios-cantact-manager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ios-cantact-manager"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,9 +79,9 @@
 		3B4BC7942987619800C21130 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
+				764D00F12989F37F00E5D75D /* Models */,
 				3B881C4C2989EF0D00A47153 /* Views */,
 				3B881C4B2989EF0600A47153 /* Controllers */,
-				3B881C4A2989EF0000A47153 /* Models */,
 				3B4BC7952987619800C21130 /* AppDelegate.swift */,
 				3B4BC7972987619800C21130 /* SceneDelegate.swift */,
 				3B4BC79E2987619A00C21130 /* Assets.xcassets */,
@@ -87,13 +89,6 @@
 				3B4BC7A32987619A00C21130 /* Info.plist */,
 			);
 			path = ContactManagerUI;
-			sourceTree = "<group>";
-		};
-		3B881C4A2989EF0000A47153 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		3B881C4B2989EF0600A47153 /* Controllers */ = {
@@ -110,6 +105,14 @@
 				3B4BC79B2987619800C21130 /* Main.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		764D00F12989F37F00E5D75D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				764D00F62989F40B00E5D75D /* .gitkeep */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EB5EB19D2952BE4300752155 = {
@@ -225,6 +228,7 @@
 				3B4BC7A22987619A00C21130 /* LaunchScreen.storyboard in Resources */,
 				3B4BC79F2987619A00C21130 /* Assets.xcassets in Resources */,
 				3B4BC79D2987619800C21130 /* Main.storyboard in Resources */,
+				764D00F72989F40B00E5D75D /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
