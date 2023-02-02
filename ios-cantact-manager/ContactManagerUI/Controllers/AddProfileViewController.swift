@@ -26,5 +26,24 @@ class AddProfileViewController: UIViewController {
         telTextField.keyboardType = .numbersAndPunctuation
         
     }
+
+    @IBAction func canelButtonDidTap(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "예", style: .destructive) { _ in
+            self.dismiss(animated: true)
+        }
+        let cancel = UIAlertAction(title: "아니오", style: .default)
+
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+
+        present(alert, animated: true)
+    }
+
+
+    @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
+    }
+
+
     
 }

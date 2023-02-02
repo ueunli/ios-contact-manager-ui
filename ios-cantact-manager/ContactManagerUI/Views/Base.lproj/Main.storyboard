@@ -151,8 +151,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="새 연락처" id="Hog-3n-gba">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cNc-VQ-8Lc"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="pRk-Ze-cKJ"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cNc-VQ-8Lc">
+                            <connections>
+                                <action selector="canelButtonDidTap:" destination="0eo-PR-Nfy" id="s3c-GB-sRd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="pRk-Ze-cKJ">
+                            <connections>
+                                <action selector="saveButtonDidTap:" destination="0eo-PR-Nfy" id="OAe-XE-lFe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="ageTextField" destination="wmh-7E-MoI" id="sUR-Qb-Kqx"/>
