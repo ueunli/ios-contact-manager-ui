@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ListProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var profiles: [Profile] {
         Array(ContactManageSystem().profiles)
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ListProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         profiles.count
     }
