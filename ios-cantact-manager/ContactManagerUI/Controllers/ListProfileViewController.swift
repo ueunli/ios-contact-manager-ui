@@ -7,15 +7,31 @@
 
 import UIKit
 
-class ListProfileViewController: UIViewController {
+protocol ListProfileViewControllerDelegate {
+    var newProfile: (name: String, age: String, tel: String)? { get }
+}
+
+class ListProfileViewController: UIViewController, ListProfileViewControllerDelegate {
+    var newProfile: (name: String, age: String, tel: String)?
+    
     @IBOutlet weak var tableView: UITableView!
     var profiles: [Profile] {
         Array(ContactManageSystem().profiles)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        
     }
+
+    @IBAction func addProfileButtonDidTap(_ sender: UIBarButtonItem) {
+        guard let addProfileVC = storyboard?.instantiateViewController(withIdentifier: "AddProfileViewController") as? AddProfileViewController else { return }
+        addProfileVC.delegate = self
+        let addProfileNav = UINavigationController(rootViewController: addProfileVC)
+        self.present(addProfileNav, animated: true)
+    }
+    
 }
 
 extension ListProfileViewController: UITableViewDataSource {

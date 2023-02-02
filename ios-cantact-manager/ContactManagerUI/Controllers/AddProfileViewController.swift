@@ -13,6 +13,8 @@ class AddProfileViewController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var telTextField: UITextField!
 
+    weak var delegate: ListProfileViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTextField()
@@ -22,6 +24,7 @@ class AddProfileViewController: UIViewController {
         nameTextField.keyboardType = .asciiCapable
         ageTextField.keyboardType = .numberPad
         telTextField.keyboardType = .numbersAndPunctuation
+        
     }
     
 }

@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" id="bKZ-EC-kr5">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ofi-aS-bZ9">
                             <connections>
-                                <segue destination="HYH-6i-Wey" kind="presentation" id="lMt-3N-eps"/>
+                                <action selector="addProfileButtonDidTap:" destination="BYZ-38-t0r" id="InP-Mz-dDG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -74,13 +74,13 @@
         <!--새 연락처-->
         <scene sceneID="pnI-3y-naF">
             <objects>
-                <viewController id="0eo-PR-Nfy" customClass="AddProfileViewController" customModule="ContactManagerUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddProfileViewController" id="0eo-PR-Nfy" customClass="AddProfileViewController" customModule="ContactManagerUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wUj-aj-xaC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0CI-dw-U3B">
-                                <rect key="frame" x="10" y="66" width="373" height="122"/>
+                                <rect key="frame" x="10" y="113" width="373" height="122"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="scN-E1-ibJ">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="34"/>
@@ -188,7 +188,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HYH-6i-Wey" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bRc-te-L7v">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
