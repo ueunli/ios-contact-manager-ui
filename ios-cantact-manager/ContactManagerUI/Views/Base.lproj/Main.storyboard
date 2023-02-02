@@ -154,6 +154,11 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cNc-VQ-8Lc"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="pRk-Ze-cKJ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ageTextField" destination="wmh-7E-MoI" id="sUR-Qb-Kqx"/>
+                        <outlet property="nameTextField" destination="8h6-0W-4PD" id="4ue-74-JaO"/>
+                        <outlet property="telTextField" destination="97W-AO-eQW" id="8c8-Kn-ODK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ygJ-aj-0nW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

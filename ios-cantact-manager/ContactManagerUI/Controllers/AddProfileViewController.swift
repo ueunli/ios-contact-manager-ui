@@ -8,10 +8,20 @@
 import UIKit
 
 class AddProfileViewController: UIViewController {
-    
+
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var telTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpTextField()
+    }
+
+    func setUpTextField() {
+        nameTextField.keyboardType = .asciiCapable
+        ageTextField.keyboardType = .numberPad
+        telTextField.keyboardType = .numbersAndPunctuation
     }
     
 }
