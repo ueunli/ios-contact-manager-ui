@@ -43,20 +43,24 @@ struct InputManager {
     }
 
     func isValidUserInput(string: String, type: RegularExpressions) -> Bool {
-        let isValid = string.range(of: type.rawValue,  options: .regularExpression) != nil
-        return isValid
+        guard !string.isEmpty  &&
+                string.range(of: type.rawValue,  options: .regularExpression) != nil else { return false }
+        return true
     }
 
-    func verifyUserInput(_ name: String, _ age: String, _ tel: String) throws {
-        guard isValidUserInput(string: name, type: RegularExpressions.nameChecker) else {
+    func verifyUserInput(_ name: String?, _ age: String?, _ tel: String?) throws {
+        guard let name,
+              isValidUserInput(string: name, type: .nameChecker) else {
             throw InputError.invalidName
         }
-
-        guard isValidUserInput(string: age, type: RegularExpressions.ageChecker) else {
+        
+        guard let age,
+              isValidUserInput(string: age, type: .ageChecker) else {
             throw InputError.invalidAge
         }
-
-        guard isValidUserInput(string: tel, type: RegularExpressions.phoneNumberChecker) else {
+        
+        guard let tel,
+              isValidUserInput(string: tel, type: .phoneNumberChecker) else {
             throw InputError.invalidTel
         }
     }

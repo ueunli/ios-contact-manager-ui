@@ -8,7 +8,8 @@
 import UIKit
 
 class AddProfileViewController: UIViewController {
-
+    var inputManager = InputManager()
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var telTextField: UITextField!
@@ -42,8 +43,28 @@ class AddProfileViewController: UIViewController {
 
 
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
+        guard let message = generateAlertMessage() else {
+            dismiss(animated: true)
+            return
+        }
+        
+        var alert: UIAlertController {
+            let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(confirm)
+            return alert
+        }
+        present(alert, animated: true)
     }
-
+    
+    func generateAlertMessage() -> String? {
+        do {
+            try inputManager.verifyUserInput(nameTextField.text, ageTextField.text, telTextField.text)
+        } catch {
+            return (error as? InputError)?.localizedDescription
+        }
+        return nil
+    }
 
     
 }
