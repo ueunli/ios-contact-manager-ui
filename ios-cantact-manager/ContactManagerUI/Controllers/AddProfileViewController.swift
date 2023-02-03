@@ -25,22 +25,12 @@ class AddProfileViewController: UIViewController {
         nameTextField.keyboardType = .asciiCapable
         ageTextField.keyboardType = .numberPad
         telTextField.keyboardType = .phonePad
-        
     }
 
     @IBAction func canelButtonDidTap(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "예", style: .destructive) { _ in
-            self.dismiss(animated: true)
-        }
-        let cancel = UIAlertAction(title: "아니오", style: .default)
-
-        alert.addAction(cancel)
-        alert.addAction(confirm)
-
+        let alert = makeAlertToAsk()
         present(alert, animated: true)
     }
-
 
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
         guard let message = generateAlertMessage() else {
@@ -49,12 +39,7 @@ class AddProfileViewController: UIViewController {
             return
         }
         
-        var alert: UIAlertController {
-            let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-            let confirm = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(confirm)
-            return alert
-        }
+        let alert = makeAlertToInform(message)
         present(alert, animated: true)
     }
     
@@ -67,5 +52,25 @@ class AddProfileViewController: UIViewController {
         return nil
     }
 
-    
+    func makeAlertToInform(_ message: String) -> UIAlertController {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "확인", style: .default)
+
+        alert.addAction(confirm)
+
+        return alert
+    }
+
+    func makeAlertToAsk() -> UIAlertController {
+        let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "예", style: .destructive) { _ in
+            self.dismiss(animated: true)
+        }
+        let cancel = UIAlertAction(title: "아니오", style: .default)
+
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+
+        return alert
+    }
 }
