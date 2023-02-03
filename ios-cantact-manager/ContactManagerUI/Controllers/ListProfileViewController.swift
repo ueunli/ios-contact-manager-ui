@@ -13,16 +13,25 @@ protocol ListProfileViewControllerDelegate {
 
 class ListProfileViewController: UIViewController, ListProfileViewControllerDelegate {
     var newProfile: (name: String, age: String, tel: String)?
+    var profiles = [Profile]()
+
+    let dummyData = [
+        Profile(name: "james", age: "30", tel: "010-2222-2222"),
+        Profile(name: "tom", age: "15", tel: "010-2222-3333"),
+        Profile(name: "jams", age: "30", tel: "010-2222-2222"),
+        Profile(name: "toem", age: "15", tel: "010-2222-3333"),
+        Profile(name: "jamses", age: "30", tel: "010-2222-2222")
+    ]
     
     @IBOutlet weak var tableView: UITableView!
-    var profiles: [Profile] {
-        Array(ContactManageSystem().profiles)
+    var sortedProfiles: [Profile] {
+        profiles.sorted(by: { $0.name < $1.name })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profiles = dummyData
         tableView.dataSource = self
-        
     }
 
     @IBAction func addProfileButtonDidTap(_ sender: UIBarButtonItem) {
@@ -40,7 +49,7 @@ extension ListProfileViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let profile = profiles[indexPath.row]
+        let profile = sortedProfiles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
 
