@@ -45,7 +45,7 @@ struct ContactManageSystem {
         }
         switch input {
         case .addProfile:
-            break //addProfile()
+            break
         case .listUpProfile:
             listUpProfile()
         case .searchProfile:

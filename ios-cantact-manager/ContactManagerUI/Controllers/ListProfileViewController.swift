@@ -43,8 +43,9 @@ class ListProfileViewController: UIViewController, ListProfileViewControllerDele
     
     func updateProfile(name: String?, age: String?, tel: String?) {
         guard let name, let age, let tel else { return }
+        let transformedName = name.replacingOccurrences(of: " ", with: "")
         let transformedTel = contactManageSystem.inputManager.transformTel(tel)
-        let profile = Profile(name: name, age: age, tel: transformedTel)
+        let profile = Profile(name: transformedName, age: age, tel: transformedTel)
         contactManageSystem.addProfile(of: profile)
         tableView.reloadData()
     }

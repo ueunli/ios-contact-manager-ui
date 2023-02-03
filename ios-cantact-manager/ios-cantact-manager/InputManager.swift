@@ -12,7 +12,7 @@ struct InputManager {
     private let hyphenCount = 2
 
     enum RegularExpressions: String {
-        case nameChecker = "^[a-zA-Z]*$"
+        case nameChecker = "^[a-zA-Z\\s]*$"
         case ageChecker = "^[0-9]{1,3}$"
         case phoneNumberChecker = "[0-9]{9,}$"
     }
