@@ -17,11 +17,11 @@
 		3B4BC7A8298761A700C21130 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA142952C8F1002C7E4D /* Profile.swift */; };
 		3B4BC7A9298761AA00C21130 /* ContactManageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA162952D10D002C7E4D /* ContactManageSystem.swift */; };
 		3B4BC7AA298761AC00C21130 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE1922953F044003C94B0 /* InputError.swift */; };
-		3B4BC7AB298761AC00C21130 /* OutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB374D09295AC31800A737ED /* OutputManager.swift */; };
 		3B7DEA132952C861002C7E4D /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA122952C861002C7E4D /* InputManager.swift */; };
 		3B7DEA152952C8F1002C7E4D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA142952C8F1002C7E4D /* Profile.swift */; };
 		3B7DEA172952D10D002C7E4D /* ContactManageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DEA162952D10D002C7E4D /* ContactManageSystem.swift */; };
 		3B881C70298B4D8B00A47153 /* AddProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B881C6F298B4D8B00A47153 /* AddProfileViewController.swift */; };
+		3B881C73298CAB6F00A47153 /* OutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB374D09295AC31800A737ED /* OutputManager.swift */; };
 		764D00F72989F40B00E5D75D /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 764D00F62989F40B00E5D75D /* .gitkeep */; };
 		EB1AE1932953F044003C94B0 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1AE1922953F044003C94B0 /* InputError.swift */; };
 		EB374D0A295AC31800A737ED /* OutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB374D09295AC31800A737ED /* OutputManager.swift */; };
@@ -244,11 +244,11 @@
 			files = (
 				3B4BC7A7298761A500C21130 /* InputManager.swift in Sources */,
 				3B4BC7AA298761AC00C21130 /* InputError.swift in Sources */,
-				3B4BC7AB298761AC00C21130 /* OutputManager.swift in Sources */,
 				3B4BC7A8298761A700C21130 /* Profile.swift in Sources */,
 				3B881C70298B4D8B00A47153 /* AddProfileViewController.swift in Sources */,
 				3B4BC7A9298761AA00C21130 /* ContactManageSystem.swift in Sources */,
 				3B4BC79A2987619800C21130 /* ListProfileViewController.swift in Sources */,
+				3B881C73298CAB6F00A47153 /* OutputManager.swift in Sources */,
 				3B4BC7962987619800C21130 /* AppDelegate.swift in Sources */,
 				3B4BC7982987619800C21130 /* SceneDelegate.swift in Sources */,
 			);

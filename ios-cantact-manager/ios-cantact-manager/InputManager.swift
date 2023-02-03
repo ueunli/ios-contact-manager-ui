@@ -22,29 +22,27 @@ struct InputManager {
         case ten = "([0-9]{3})([0-9]{3})([0-9]{4})"
         case eleven = "([0-9]{3})([0-9]{4})([0-9]{4})"
         case more = "([0-9]{3})([0-9]{4})([0-9]{4,})"
+        
+        func transform(_ phoneNumber: String) -> String {
+            var result = ""
+            if let regex = try? NSRegularExpression(pattern: self.rawValue) {
+                result = regex.stringByReplacingMatches(in: phoneNumber, range: NSRange(phoneNumber.startIndex..., in: phoneNumber), withTemplate: "$1-$2-$3")
+            }
+            return result
+        }
     }
 
     func transformTel(_ tel: String) -> String {
-        var transformedTel = ""
         switch tel.count {
         case 9:
-            if let regex = try? NSRegularExpression(pattern: PhoneNumberRegularExpressions.nine.rawValue) {
-                transformedTel = regex.stringByReplacingMatches(in: tel, range: NSRange(tel.startIndex..., in: tel), withTemplate: "$1-$2-$3")
-            }
+            return PhoneNumberRegularExpressions.nine.transform(tel)
         case 10:
-            if let regex = try? NSRegularExpression(pattern: PhoneNumberRegularExpressions.ten.rawValue) {
-                transformedTel = regex.stringByReplacingMatches(in: tel, range: NSRange(tel.startIndex..., in: tel), withTemplate: "$1-$2-$3")
-            }
+            return PhoneNumberRegularExpressions.ten.transform(tel)
         case 11:
-            if let regex = try? NSRegularExpression(pattern: PhoneNumberRegularExpressions.eleven.rawValue) {
-                transformedTel = regex.stringByReplacingMatches(in: tel, range: NSRange(tel.startIndex..., in: tel), withTemplate: "$1-$2-$3")
-            }
+            return PhoneNumberRegularExpressions.eleven.transform(tel)
         default:
-            if let regex = try? NSRegularExpression(pattern: PhoneNumberRegularExpressions.more.rawValue) {
-                transformedTel = regex.stringByReplacingMatches(in: tel, range: NSRange(tel.startIndex..., in: tel), withTemplate: "$1-$2-$3")
-            }
+            return PhoneNumberRegularExpressions.more.transform(tel)
         }
-        return transformedTel
     }
     
     func menuInput() throws -> String {
