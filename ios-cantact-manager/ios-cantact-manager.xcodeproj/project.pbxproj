@@ -81,13 +81,12 @@
 		3B4BC7942987619800C21130 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
+				769EB283298CD489002372F5 /* LaunchScreen */,
+				769EB282298CD479002372F5 /* AppConfiguration */,
 				764D00F12989F37F00E5D75D /* Models */,
 				3B881C4C2989EF0D00A47153 /* Views */,
 				3B881C4B2989EF0600A47153 /* Controllers */,
-				3B4BC7952987619800C21130 /* AppDelegate.swift */,
-				3B4BC7972987619800C21130 /* SceneDelegate.swift */,
 				3B4BC79E2987619A00C21130 /* Assets.xcassets */,
-				3B4BC7A02987619A00C21130 /* LaunchScreen.storyboard */,
 				3B4BC7A32987619A00C21130 /* Info.plist */,
 			);
 			path = ContactManagerUI;
@@ -116,6 +115,23 @@
 				764D00F62989F40B00E5D75D /* .gitkeep */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		769EB282298CD479002372F5 /* AppConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				3B4BC7952987619800C21130 /* AppDelegate.swift */,
+				3B4BC7972987619800C21130 /* SceneDelegate.swift */,
+			);
+			path = AppConfiguration;
+			sourceTree = "<group>";
+		};
+		769EB283298CD489002372F5 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3B4BC7A02987619A00C21130 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		EB5EB19D2952BE4300752155 = {
