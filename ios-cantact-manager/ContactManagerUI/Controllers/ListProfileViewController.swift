@@ -43,7 +43,8 @@ class ListProfileViewController: UIViewController, ListProfileViewControllerDele
     
     func updateProfile(name: String?, age: String?, tel: String?) {
         guard let name, let age, let tel else { return }
-        let profile = Profile(name: name, age: age, tel: tel)
+        let transformedTel = contactManageSystem.inputManager.transformTel(tel)
+        let profile = Profile(name: name, age: age, tel: transformedTel)
         contactManageSystem.addProfile(of: profile)
         tableView.reloadData()
     }

@@ -14,7 +14,37 @@ struct InputManager {
     enum RegularExpressions: String {
         case nameChecker = "^[a-zA-Z]*$"
         case ageChecker = "^[0-9]{1,3}$"
-        case phoneNumberChecker = "^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$"
+        case phoneNumberChecker = "[0-9]{9,}$"
+    }
+
+    enum PhoneNumberRegularExpressions: String {
+        case nine = "([0-9]{2})([0-9]{3})([0-9]{4})"
+        case ten = "([0-9]{3})([0-9]{3})([0-9]{4})"
+        case eleven = "([0-9]{3})([0-9]{4})([0-9]{4})"
+        case more = "([0-9]{3})([0-9]{4})([0-9]{4,})"
+    }
+
+    func transformTel(_ tel: String) -> String {
+        var transformedTel = ""
+        switch tel.count {
+        case 9:
+            if let regex = try? NSRegularExpression(pattern: PhoneNumberRegularExpressions.nine.rawValue) {
+                transformedTel = regex.stringByReplacingMatches(in: tel, range: NSRange(tel.startIndex..., in: tel), withTemplate: "$1-$2-$3")
+            }
+        case 10:
+            if let regex = try? NSRegularExpression(pattern: PhoneNumberRegularExpressions.ten.rawValue) {
+                transformedTel = regex.stringByReplacingMatches(in: tel, range: NSRange(tel.startIndex..., in: tel), withTemplate: "$1-$2-$3")
+            }
+        case 11:
+            if let regex = try? NSRegularExpression(pattern: PhoneNumberRegularExpressions.eleven.rawValue) {
+                transformedTel = regex.stringByReplacingMatches(in: tel, range: NSRange(tel.startIndex..., in: tel), withTemplate: "$1-$2-$3")
+            }
+        default:
+            if let regex = try? NSRegularExpression(pattern: PhoneNumberRegularExpressions.more.rawValue) {
+                transformedTel = regex.stringByReplacingMatches(in: tel, range: NSRange(tel.startIndex..., in: tel), withTemplate: "$1-$2-$3")
+            }
+        }
+        return transformedTel
     }
     
     func menuInput() throws -> String {

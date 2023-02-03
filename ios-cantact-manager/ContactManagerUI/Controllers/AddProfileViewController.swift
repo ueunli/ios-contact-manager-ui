@@ -24,7 +24,7 @@ class AddProfileViewController: UIViewController {
     func setUpTextField() {
         nameTextField.keyboardType = .asciiCapable
         ageTextField.keyboardType = .numberPad
-        telTextField.keyboardType = .numbersAndPunctuation
+        telTextField.keyboardType = .phonePad
         
     }
 
