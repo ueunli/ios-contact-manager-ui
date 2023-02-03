@@ -45,7 +45,7 @@ struct ContactManageSystem {
         }
         switch input {
         case .addProfile:
-            addProfile()
+            break //addProfile()
         case .listUpProfile:
             listUpProfile()
         case .searchProfile:
@@ -55,24 +55,8 @@ struct ContactManageSystem {
         }
     }
     
-    mutating func addProfile() {
-        do {
-            OutputManager.print(text: .inputInfo)
-            let inputArray = try inputManager.parseUserInput()
-            let (name, age ,tel) = (inputArray[0], inputArray[1], inputArray[2])
-            try inputManager.verifyUserInput(name, age, tel)
-            let profile = Profile(name: name, age: age, tel: tel)
-            profiles.insert(profile)
-            OutputManager.print(profile: profile)
-        } catch InputError.invalidInput {
-            OutputManager.print(text: .invalidInput)
-        } catch InputError.invalidAge {
-            OutputManager.print(text: .invalidAge)
-        } catch InputError.invalidTel {
-            OutputManager.print(text: .invalidTel)
-        } catch {
-            OutputManager.print(text: .invalidInput)
-        }
+    mutating func addProfile(of profile: Profile) {
+        profiles.insert(profile)
     }
     
     private func listUpProfile() {

@@ -8,13 +8,14 @@
 import UIKit
 
 protocol ListProfileViewControllerDelegate {
-    var newProfile: (name: String, age: String, tel: String)? { get }
+    func updateProfile(name: String?, age: String?, tel: String?)
 }
 
 class ListProfileViewController: UIViewController, ListProfileViewControllerDelegate {
-    var newProfile: (name: String, age: String, tel: String)?
-    var profiles = [Profile]()
-
+    var contactManageSystem = ContactManageSystem()
+    var profiles: [Profile] {
+        contactManageSystem.profiles.sorted(by: { $0.name < $1.name })
+    }
     let dummyData = [
         Profile(name: "james", age: "30", tel: "010-2222-2222"),
         Profile(name: "tom", age: "15", tel: "010-2222-3333"),
@@ -24,13 +25,12 @@ class ListProfileViewController: UIViewController, ListProfileViewControllerDele
     ]
     
     @IBOutlet weak var tableView: UITableView!
-    var sortedProfiles: [Profile] {
-        profiles.sorted(by: { $0.name < $1.name })
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profiles = dummyData
+        dummyData.forEach {
+            contactManageSystem.addProfile(of: $0)
+        }
         tableView.dataSource = self
     }
 
@@ -41,6 +41,12 @@ class ListProfileViewController: UIViewController, ListProfileViewControllerDele
         self.present(addProfileNav, animated: true)
     }
     
+    func updateProfile(name: String?, age: String?, tel: String?) {
+        guard let name, let age, let tel else { return }
+        let profile = Profile(name: name, age: age, tel: tel)
+        contactManageSystem.addProfile(of: profile)
+        tableView.reloadData()
+    }
 }
 
 extension ListProfileViewController: UITableViewDataSource {
@@ -49,7 +55,7 @@ extension ListProfileViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let profile = sortedProfiles[indexPath.row]
+        let profile = profiles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
 

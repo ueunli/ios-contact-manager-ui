@@ -44,6 +44,7 @@ class AddProfileViewController: UIViewController {
 
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
         guard let message = generateAlertMessage() else {
+            delegate?.updateProfile(name: nameTextField.text, age: ageTextField.text, tel: telTextField.text)
             dismiss(animated: true)
             return
         }
