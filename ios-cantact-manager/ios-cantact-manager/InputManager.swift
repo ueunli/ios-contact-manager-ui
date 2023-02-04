@@ -14,35 +14,7 @@ struct InputManager {
     enum RegularExpressions: String {
         case nameChecker = "^[a-zA-Z\\s]*$"
         case ageChecker = "^[0-9]{1,3}$"
-        case phoneNumberChecker = "[0-9]{9,}$"
-    }
-
-    enum PhoneNumberRegularExpressions: String {
-        case nine = "([0-9]{2})([0-9]{3})([0-9]{4})"
-        case ten = "([0-9]{3})([0-9]{3})([0-9]{4})"
-        case eleven = "([0-9]{3})([0-9]{4})([0-9]{4})"
-        case more = "([0-9]{3})([0-9]{4})([0-9]{4,})"
-        
-        func transform(_ phoneNumber: String) -> String {
-            var result = ""
-            if let regex = try? NSRegularExpression(pattern: self.rawValue) {
-                result = regex.stringByReplacingMatches(in: phoneNumber, range: NSRange(phoneNumber.startIndex..., in: phoneNumber), withTemplate: "$1-$2-$3")
-            }
-            return result
-        }
-    }
-
-    func transformTel(_ tel: String) -> String {
-        switch tel.count {
-        case 9:
-            return PhoneNumberRegularExpressions.nine.transform(tel)
-        case 10:
-            return PhoneNumberRegularExpressions.ten.transform(tel)
-        case 11:
-            return PhoneNumberRegularExpressions.eleven.transform(tel)
-        default:
-            return PhoneNumberRegularExpressions.more.transform(tel)
-        }
+        case phoneNumberChecker = "[0-9-]{9,}$"
     }
     
     func menuInput() throws -> String {
