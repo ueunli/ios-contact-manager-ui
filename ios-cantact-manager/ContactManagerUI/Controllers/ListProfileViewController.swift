@@ -11,12 +11,12 @@ protocol ListProfileViewControllerDelegate {
     func updateProfile(name: String?, age: String?, tel: String?)
 }
 
-class ListProfileViewController: UIViewController, ListProfileViewControllerDelegate {
-    var contactManageSystem = ContactManageSystem()
-    var profiles: [Profile] {
+final class ListProfileViewController: UIViewController, ListProfileViewControllerDelegate {
+    private var contactManageSystem = ContactManageSystem()
+    private var profiles: [Profile] {
         contactManageSystem.profiles.sorted(by: { $0.name < $1.name })
     }
-    let dummyData = [
+    private let dummyData = [
         Profile(name: "james", age: "30", tel: "010-2222-2222"),
         Profile(name: "tom", age: "15", tel: "010-2222-3333"),
         Profile(name: "jams", age: "30", tel: "010-2222-2222"),
@@ -24,7 +24,7 @@ class ListProfileViewController: UIViewController, ListProfileViewControllerDele
         Profile(name: "jamses", age: "30", tel: "010-2222-2222")
     ]
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class ListProfileViewController: UIViewController, ListProfileViewControllerDele
         tableView.dataSource = self
     }
 
-    @IBAction func addProfileButtonDidTap(_ sender: UIBarButtonItem) {
+    @IBAction private func addProfileButtonDidTap(_ sender: UIBarButtonItem) {
         guard let addProfileVC = storyboard?.instantiateViewController(withIdentifier: "AddProfileViewController") as? AddProfileViewController else { return }
         addProfileVC.delegate = self
         let addProfileNav = UINavigationController(rootViewController: addProfileVC)

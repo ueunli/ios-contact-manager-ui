@@ -8,12 +8,12 @@
 import UIKit
 
 class AddProfileViewController: UIViewController {
-    var inputManager = InputManager()
+    private var inputManager = InputManager()
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var telTextField: UITextField!
-
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var ageTextField: UITextField!
+    @IBOutlet private weak var telTextField: UITextField!
+    
     weak var delegate: ListProfileViewController?
     
     override func viewDidLoad() {
@@ -21,8 +21,8 @@ class AddProfileViewController: UIViewController {
         telTextField.delegate = self
         setUpTextField()
     }
-
-    func setUpTextField() {
+    
+    private func setUpTextField() {
         nameTextField.keyboardType = .asciiCapable
         ageTextField.keyboardType = .numberPad
         telTextField.keyboardType = .phonePad
@@ -31,12 +31,12 @@ class AddProfileViewController: UIViewController {
         ageTextField.delegate = self
         telTextField.delegate = self
     }
-
-    @IBAction func canelButtonDidTap(_ sender: UIBarButtonItem) {
+    
+    @IBAction private func canelButtonDidTap(_ sender: UIBarButtonItem) {
         let alert = makeAlertToAsk()
         present(alert, animated: true)
     }
-
+    
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
         guard let message = generateAlertMessage() else {
             delegate?.updateProfile(name: nameTextField.text, age: ageTextField.text, tel: telTextField.text)
@@ -48,7 +48,7 @@ class AddProfileViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func generateAlertMessage() -> String? {
+    private func generateAlertMessage() -> String? {
         do {
             try inputManager.verifyUserInput(nameTextField.text, ageTextField.text, telTextField.text)
         } catch {
@@ -56,31 +56,29 @@ class AddProfileViewController: UIViewController {
         }
         return nil
     }
-
-    func makeAlertToInform(_ message: String) -> UIAlertController {
+    
+    private func makeAlertToInform(_ message: String) -> UIAlertController {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "확인", style: .default)
-
+        
         alert.addAction(confirm)
-
+        
         return alert
     }
-
-    func makeAlertToAsk() -> UIAlertController {
+    
+    private func makeAlertToAsk() -> UIAlertController {
         let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .destructive) { _ in
             self.dismiss(animated: true)
         }
         let cancel = UIAlertAction(title: "아니오", style: .default)
-
+        
         alert.addAction(cancel)
         alert.addAction(confirm)
-
+        
         return alert
     }
 }
-
-
 
 extension AddProfileViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -94,7 +92,7 @@ extension AddProfileViewController: UITextFieldDelegate {
         return false
     }
     
-    func insertHyphenInTel(_ tel: String) -> String {
+    private func insertHyphenInTel(_ tel: String) -> String {
         let tel = tel.replacingOccurrences(of: "-", with: "")
         switch tel.count {
         case ...3: return PhoneNumberRegularExpressions.oneToThree.transform(tel)
@@ -105,7 +103,7 @@ extension AddProfileViewController: UITextFieldDelegate {
         }
     }
     
-    enum PhoneNumberRegularExpressions: String {
+    private enum PhoneNumberRegularExpressions: String {
         case oneToThree = "([0-9]{3})"
         case fourToFive = "([0-9]{2})([0-9]{2,3})"
         case sixToNine = "([0-9]{2})([0-9]{3})([0-9]{1,4})"
