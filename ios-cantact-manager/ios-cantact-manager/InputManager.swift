@@ -14,7 +14,7 @@ struct InputManager {
     enum RegularExpressions: String {
         case nameChecker = "^[a-zA-Z\\s]*$"
         case ageChecker = "^[0-9]{1,3}$"
-        case phoneNumberChecker = "[0-9-]{9,}$"
+        case phoneNumberChecker = "[0-9-]{11,}$"
     }
     
     func menuInput() throws -> String {
