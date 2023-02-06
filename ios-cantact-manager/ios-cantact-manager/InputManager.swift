@@ -49,8 +49,9 @@ struct InputManager {
     }
 
     func verifyUserInput(_ name: String?, _ age: String?, _ tel: String?) throws {
-        guard let name,
-              isValidUserInput(string: name, type: .nameChecker) else {
+        guard let name else { return }
+        let filteredName = name.replacingOccurrences(of: " ", with: "")
+        guard isValidUserInput(string: filteredName, type: .nameChecker) else {
             throw InputError.invalidName
         }
         

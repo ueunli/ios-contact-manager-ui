@@ -26,9 +26,7 @@ class AddProfileViewController: UIViewController {
         nameTextField.keyboardType = .asciiCapable
         ageTextField.keyboardType = .numberPad
         telTextField.keyboardType = .phonePad
-        
-        nameTextField.delegate = self
-        ageTextField.delegate = self
+        nameTextField.autocorrectionType = .no
         telTextField.delegate = self
     }
     
