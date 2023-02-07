@@ -49,7 +49,7 @@ struct ContactManageSystem {
         case .listUpProfile:
             listUpProfile()
         case .searchProfile:
-            searchProfile()
+            break
         case .stop:
             stop()
         }
@@ -63,20 +63,9 @@ struct ContactManageSystem {
         OutputManager.print(profiles: profiles)
     }
     
-    private func searchProfile() {
-        do {
-            OutputManager.print(text: .inputProfileName)
-            let targetName = try inputManager.targetInput()
-            let filteredProfileData = profiles.filter { $0.name == targetName }
-            guard !filteredProfileData.isEmpty else {
-                OutputManager.printNoMatchingData(name: targetName)
-                return
-            }
-            OutputManager.print(profiles: filteredProfileData)
-        } catch {
-            OutputManager.print(text: .invalidInput)
-        }
-    }
+//    func searchProfile(name: String) -> [Profile] {
+//        profiles.filter { $0.name == name }
+//    }
     
     mutating func stop() {
         OutputManager.print(text: .stopSystem)
