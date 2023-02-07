@@ -99,13 +99,8 @@ extension AddProfileViewController: UITextFieldDelegate {
     
     private func insertHyphenInTel(_ tel: String) -> String {
         let tel = tel.replacingOccurrences(of: "-", with: "")
-        switch tel.count {
-        case ...3: return PhoneNumberRegularExpressions.oneToThree.transform(tel)
-        case ...5: return PhoneNumberRegularExpressions.fourToFive.transform(tel)
-        case ...9: return PhoneNumberRegularExpressions.sixToNine.transform(tel)
-        case 10: return PhoneNumberRegularExpressions.ten.transform(tel)
-        default: return PhoneNumberRegularExpressions.elevenOrMore.transform(tel)
-        }
+        let regex = PhoneNumberRegularExpressions(phoneNumber: tel)
+        return regex.transform(tel)
     }
     
     private enum PhoneNumberRegularExpressions: String {
@@ -129,6 +124,16 @@ extension AddProfileViewController: UITextFieldDelegate {
                 result = regex.stringByReplacingMatches(in: phoneNumber, range: NSRange(phoneNumber.startIndex..., in: phoneNumber), withTemplate: self.regexTemplate)
             }
             return result
+        }
+        
+        init(phoneNumber: String) {
+            switch phoneNumber.count {
+            case ...3: self = .oneToThree
+            case ...5: self = .fourToFive
+            case ...9: self = .sixToNine
+            case 10: self = .ten
+            default: self = .elevenOrMore
+            }
         }
     }
 }
