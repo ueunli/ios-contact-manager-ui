@@ -16,6 +16,14 @@ final class ListProfileViewController: UIViewController, ProfileDelegate {
     private var profiles: [Profile] {
         contactManageSystem.profiles.sorted(by: { $0.name < $1.name })
     }
+    private lazy var filteredProfiles = [Profile]()
+    private var isSearching: Bool {
+        let searchBarController = self.navigationItem.searchController
+        let isActive = searchBarController?.isActive ?? false
+        let isEmpty = searchBarController?.searchBar.text?.isEmpty ?? false
+        return isActive && !isEmpty
+    }
+    
     private let dummyData = [
         Profile(name: "james", age: "30", tel: "010-2222-2222"),
         Profile(name: "tom", age: "15", tel: "010-2222-3333"),
@@ -32,6 +40,7 @@ final class ListProfileViewController: UIViewController, ProfileDelegate {
             contactManageSystem.addProfile($0)
         }
         tableView.dataSource = self
+        makeSearchBar()
     }
 
     @IBAction private func addProfileButtonDidTap(_ sender: UIBarButtonItem) {
@@ -51,11 +60,11 @@ final class ListProfileViewController: UIViewController, ProfileDelegate {
 
 extension ListProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        profiles.count
+        isSearching ? filteredProfiles.count : profiles.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let profile = profiles[indexPath.row]
+        let profile = isSearching ? filteredProfiles[indexPath.row] : profiles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
 
@@ -69,3 +78,18 @@ extension ListProfileViewController: UITableViewDataSource {
     }
 }
 
+extension ListProfileViewController: UISearchResultsUpdating {
+    func makeSearchBar() {
+        let searchBar = UISearchController(searchResultsController: nil)
+        searchBar.searchResultsUpdater = self
+        self.navigationItem.searchController = searchBar
+        self.navigationItem.hidesSearchBarWhenScrolling = true    //TODO: - self들 정리(전체적으로)
+        self.navigationItem.searchController?.searchBar.autocapitalizationType = .none    //TODO: - 자동 대문자화 해제(정리 필요)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        self.filteredProfiles = self.profiles.filter { $0.name == text }    //TODO: - 대소문자 상관x
+        tableView.reloadData()
+    }
+}
