@@ -41,22 +41,25 @@ class AddProfileViewController: UIViewController {
         guard let name = nameTextField.text,
               let age = ageTextField.text,
               let tel = telTextField.text else { return }
-        guard let message = generateAlertMessage() else {
-            delegate?.updateProfile(name: name, age: age, tel: tel)
-            dismiss(animated: true)
-            return
-        }
         
-        makeAlertToInform(message)
+        switch detectInputError() {
+        case .success(let dismiss):
+            delegate?.updateProfile(name: name, age: age, tel: tel)
+            dismiss()
+        case .failure(let error):
+            makeAlertToInform(error.localizedDescription)
+        }
     }
     
-    private func generateAlertMessage() -> String? {
+    private func detectInputError() -> Result<() -> Void, InputError> {
         do {
             try inputManager.verifyUserInput(nameTextField.text, ageTextField.text, telTextField.text)
         } catch {
-            return (error as? InputError)?.localizedDescription
+            if let error = error as? InputError {
+                return .failure(error)
+            }
         }
-        return nil
+        return .success({ self.dismiss(animated: true) })
     }
     
     private func makeAlertToInform(_ message: String) {
