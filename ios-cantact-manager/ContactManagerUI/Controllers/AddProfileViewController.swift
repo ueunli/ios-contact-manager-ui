@@ -93,12 +93,12 @@ extension AddProfileViewController: UITextFieldDelegate {
         guard let numbers = textField.text else { return true }
         let tel = "\(numbers)\(newNumber)"
         
-        textField.text = insertHyphenInTel(tel)
+        textField.text = hyphenate(phoneNumber: tel)
         return false
     }
     
-    private func insertHyphenInTel(_ tel: String) -> String {
-        let tel = tel.replacingOccurrences(of: "-", with: "")
+    private func hyphenate(phoneNumber: String) -> String {
+        let tel = phoneNumber.replacingOccurrences(of: "-", with: "")
         let regex = PhoneNumberRegularExpressions(phoneNumber: tel)
         return regex.transform(tel)
     }
