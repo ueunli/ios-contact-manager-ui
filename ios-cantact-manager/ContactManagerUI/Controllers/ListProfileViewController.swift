@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ListProfileViewControllerDelegate: AnyObject {
-    func updateProfile(name: String?, age: String?, tel: String?)
+    func updateProfile(name: String, age: String, tel: String)
 }
 
 final class ListProfileViewController: UIViewController, ListProfileViewControllerDelegate {
@@ -41,8 +41,7 @@ final class ListProfileViewController: UIViewController, ListProfileViewControll
         self.present(addProfileNav, animated: true)
     }
     
-    func updateProfile(name: String?, age: String?, tel: String?) {
-        guard let name, let age, let tel else { return }
+    func updateProfile(name: String, age: String, tel: String) {
         let transformedName = name.replacingOccurrences(of: " ", with: "")
         let profile = Profile(name: transformedName, age: age, tel: tel)
         contactManageSystem.addProfile(of: profile)
