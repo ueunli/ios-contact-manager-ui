@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ListProfileViewControllerDelegate {
+protocol ListProfileViewControllerDelegate: AnyObject {
     func updateProfile(name: String?, age: String?, tel: String?)
 }
 

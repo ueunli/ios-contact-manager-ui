@@ -14,11 +14,10 @@ class AddProfileViewController: UIViewController {
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var telTextField: UITextField!
     
-    weak var delegate: ListProfileViewController?
+    weak var delegate: ListProfileViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        telTextField.delegate = self
         setUpTextField()
     }
 
@@ -34,9 +33,8 @@ class AddProfileViewController: UIViewController {
         telTextField.delegate = self
     }
     
-    @IBAction private func canelButtonDidTap(_ sender: UIBarButtonItem) {
-        let alert = makeAlertToAsk()
-        present(alert, animated: true)
+    @IBAction private func cancelButtonDidTap(_ sender: UIBarButtonItem) {
+        makeAlertToAsk()
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
@@ -46,8 +44,7 @@ class AddProfileViewController: UIViewController {
             return
         }
         
-        let alert = makeAlertToInform(message)
-        present(alert, animated: true)
+        makeAlertToInform(message)
     }
     
     private func generateAlertMessage() -> String? {
@@ -59,16 +56,16 @@ class AddProfileViewController: UIViewController {
         return nil
     }
     
-    private func makeAlertToInform(_ message: String) -> UIAlertController {
+    private func makeAlertToInform(_ message: String) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "확인", style: .default)
         
         alert.addAction(confirm)
         
-        return alert
+        present(alert, animated: true)
     }
     
-    private func makeAlertToAsk() -> UIAlertController {
+    private func makeAlertToAsk() {
         let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .destructive) { _ in
             self.dismiss(animated: true)
@@ -78,14 +75,14 @@ class AddProfileViewController: UIViewController {
         alert.addAction(cancel)
         alert.addAction(confirm)
         
-        return alert
+        present(alert, animated: true)
     }
 }
 
 extension AddProfileViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard textField.keyboardType == .phonePad else { return true }
-        
+        guard textField == telTextField else { return true }
+
         guard let newNumber = Int(string) else { return true }
         guard let numbers = textField.text else { return true }
         let tel = "\(numbers)\(newNumber)"

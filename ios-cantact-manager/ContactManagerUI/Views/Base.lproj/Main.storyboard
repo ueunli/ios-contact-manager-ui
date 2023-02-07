@@ -153,7 +153,7 @@
                     <navigationItem key="navigationItem" title="새 연락처" id="Hog-3n-gba">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cNc-VQ-8Lc">
                             <connections>
-                                <action selector="canelButtonDidTap:" destination="0eo-PR-Nfy" id="s3c-GB-sRd"/>
+                                <action selector="cancelButtonDidTap:" destination="0eo-PR-Nfy" id="BLk-lW-SGU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="pRk-Ze-cKJ">
