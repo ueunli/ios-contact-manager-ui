@@ -14,7 +14,7 @@ class AddProfileViewController: UIViewController {
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var telTextField: UITextField!
     
-    weak var delegate: ListProfileViewControllerDelegate?
+    weak var delegate: ProfileDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
