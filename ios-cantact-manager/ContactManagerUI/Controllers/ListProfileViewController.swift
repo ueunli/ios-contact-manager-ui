@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol ProfileDelegate: AnyObject {
-    func updateProfile(name: String, age: String, tel: String)
-}
-
-final class ListProfileViewController: UIViewController, ProfileDelegate {
+final class ListProfileViewController: UIViewController, AddProfileViewControllerDelegate {
     private var contactManageSystem = ContactManageSystem()
     private var profiles: [Profile] {
         contactManageSystem.profiles.sorted(by: { $0.name < $1.name })

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddProfileViewControllerDelegate: AnyObject {
+    func updateProfile(name: String, age: String, tel: String)
+}
+
 class AddProfileViewController: UIViewController {
     private var inputManager = InputManager()
     
@@ -14,7 +18,7 @@ class AddProfileViewController: UIViewController {
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var telTextField: UITextField!
     
-    weak var delegate: ProfileDelegate?
+    weak var delegate: AddProfileViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +104,7 @@ extension AddProfileViewController: UITextFieldDelegate {
     private func hyphenate(tel: String) -> String {
         let tel = tel.replacingOccurrences(of: "-", with: "")
         let regex = PhoneNumberRegularExpression(phoneNumber: tel)
-        return regex.transform(tel)
+        return regex.format(phoneNumber: tel)
     }
     
     private enum PhoneNumberRegularExpression: String {
@@ -120,7 +124,7 @@ extension AddProfileViewController: UITextFieldDelegate {
             }
         }
         
-        func transform(_ phoneNumber: String) -> String {
+        func format(phoneNumber: String) -> String {
             var result = ""
             if let regex = try? NSRegularExpression(pattern: self.rawValue) {
                 result = regex.stringByReplacingMatches(in: phoneNumber, range: NSRange(phoneNumber.startIndex..., in: phoneNumber), withTemplate: self.template)
