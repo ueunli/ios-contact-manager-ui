@@ -82,14 +82,14 @@ extension ListProfileViewController: UISearchResultsUpdating {
     func makeSearchBar() {
         let searchBar = UISearchController(searchResultsController: nil)
         searchBar.searchResultsUpdater = self
-        self.navigationItem.searchController = searchBar
-        self.navigationItem.hidesSearchBarWhenScrolling = true    //TODO: - self들 정리(전체적으로)
-        self.navigationItem.searchController?.searchBar.autocapitalizationType = .none    //TODO: - 자동 대문자화 해제(정리 필요)
+        searchBar.searchBar.autocapitalizationType = .none
+        navigationItem.searchController = searchBar
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        self.filteredProfiles = self.profiles.filter { $0.name == text }    //TODO: - 대소문자 상관x
+        filteredProfiles = profiles.filter { $0.name.lowercased() == text.lowercased() }
         tableView.reloadData()
     }
 }
