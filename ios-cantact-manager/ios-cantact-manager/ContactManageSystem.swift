@@ -63,9 +63,9 @@ struct ContactManageSystem {
         OutputManager.print(profiles: profiles)
     }
     
-//    func searchProfile(name: String) -> [Profile] {
-//        profiles.filter { $0.name == name }
-//    }
+    mutating func remove(profile: Profile) {
+        profiles.remove(profile)
+    }
     
     mutating func stop() {
         OutputManager.print(text: .stopSystem)

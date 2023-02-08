@@ -89,3 +89,14 @@ extension ListProfileViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
 }
+
+extension ListProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        let profile = isSearching ? filteredProfiles[indexPath.row] : profiles[indexPath.row]
+        contactManageSystem.remove(profile: profile)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+}
