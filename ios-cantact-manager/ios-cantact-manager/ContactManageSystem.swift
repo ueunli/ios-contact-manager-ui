@@ -55,7 +55,7 @@ struct ContactManageSystem {
         }
     }
     
-    mutating func addProfile(_ profile: Profile) {
+    mutating func add(profile: Profile) {
         profiles.insert(profile)
     }
     

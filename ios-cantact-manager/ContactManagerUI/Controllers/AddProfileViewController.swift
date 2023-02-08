@@ -93,38 +93,22 @@ extension AddProfileViewController: UITextFieldDelegate {
         guard let numbers = textField.text else { return true }
         let tel = "\(numbers)\(newNumber)"
         
-        textField.text = hyphenate(phoneNumber: tel)
+        textField.text = hyphenate(tel: tel)
         return false
     }
     
-    private func hyphenate(phoneNumber: String) -> String {
-        let tel = phoneNumber.replacingOccurrences(of: "-", with: "")
-        let regex = PhoneNumberRegularExpressions(phoneNumber: tel)
+    private func hyphenate(tel: String) -> String {
+        let tel = tel.replacingOccurrences(of: "-", with: "")
+        let regex = PhoneNumberRegularExpression(phoneNumber: tel)
         return regex.transform(tel)
     }
     
-    private enum PhoneNumberRegularExpressions: String {
+    private enum PhoneNumberRegularExpression: String {
         case oneToThree = "([0-9]{3})"
         case fourToFive = "([0-9]{2})([0-9]{2,3})"
         case sixToNine = "([0-9]{2})([0-9]{3})([0-9]{1,4})"
         case ten = "([0-9]{3})([0-9]{3})([0-9]{4})"
         case elevenOrMore = "([0-9]{3})([0-9]{4})([0-9]{4,})"
-        
-        private var regexTemplate: String {
-            switch self {
-            case .oneToThree: return "$1"
-            case .fourToFive: return "$1-$2"
-            default: return "$1-$2-$3"
-            }
-        }
-        
-        func transform(_ phoneNumber: String) -> String {
-            var result = ""
-            if let regex = try? NSRegularExpression(pattern: self.rawValue) {
-                result = regex.stringByReplacingMatches(in: phoneNumber, range: NSRange(phoneNumber.startIndex..., in: phoneNumber), withTemplate: self.regexTemplate)
-            }
-            return result
-        }
         
         init(phoneNumber: String) {
             switch phoneNumber.count {
@@ -133,6 +117,22 @@ extension AddProfileViewController: UITextFieldDelegate {
             case ...9: self = .sixToNine
             case 10: self = .ten
             default: self = .elevenOrMore
+            }
+        }
+        
+        func transform(_ phoneNumber: String) -> String {
+            var result = ""
+            if let regex = try? NSRegularExpression(pattern: self.rawValue) {
+                result = regex.stringByReplacingMatches(in: phoneNumber, range: NSRange(phoneNumber.startIndex..., in: phoneNumber), withTemplate: self.template)
+            }
+            return result
+        }
+        
+        private var template: String {
+            switch self {
+            case .oneToThree: return "$1"
+            case .fourToFive: return "$1-$2"
+            default: return "$1-$2-$3"
             }
         }
     }

@@ -29,7 +29,7 @@ final class ListProfileViewController: UIViewController, ProfileDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         dummyData.forEach {
-            contactManageSystem.addProfile($0)
+            contactManageSystem.add(profile: $0)
         }
         tableView.dataSource = self
     }
@@ -44,7 +44,7 @@ final class ListProfileViewController: UIViewController, ProfileDelegate {
     func updateProfile(name: String, age: String, tel: String) {
         let transformedName = name.replacingOccurrences(of: " ", with: "")
         let profile = Profile(name: transformedName, age: age, tel: tel)
-        contactManageSystem.addProfile(profile)
+        contactManageSystem.add(profile: profile)
         tableView.reloadData()
     }
 }
