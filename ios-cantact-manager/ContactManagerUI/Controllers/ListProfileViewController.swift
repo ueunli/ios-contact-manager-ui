@@ -14,7 +14,10 @@ protocol ProfileDelegate: AnyObject {
 final class ListProfileViewController: UIViewController, ProfileDelegate {
     private var contactManageSystem = ContactManageSystem()
     private var profiles: [Profile] {
-        contactManageSystem.profiles.sorted(by: { $0.name < $1.name })
+        contactManageSystem.profiles.sorted {
+            let (lhs, rhs) = ($0.name.lowercased(), $1.name.lowercased())
+            return lhs != rhs ? lhs < rhs : $0.age < $1.age
+        }
     }
     private lazy var filteredProfiles = [Profile]()
     private var isSearching: Bool {
@@ -25,11 +28,16 @@ final class ListProfileViewController: UIViewController, ProfileDelegate {
     }
     
     private let dummyData = [
-        Profile(name: "james", age: "30", tel: "010-2222-2222"),
-        Profile(name: "tom", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jams", age: "30", tel: "010-2222-2222"),
-        Profile(name: "toem", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jamses", age: "30", tel: "010-2222-2222")
+        Profile(name: "iyeah", age: "1", tel: "010-2222-2222"),
+        Profile(name: "iyeah", age: "2", tel: "010-2222-3333"),
+        Profile(name: "iyeah", age: "3", tel: "010-2222-2222"),
+        Profile(name: "iyeah", age: "4", tel: "010-2222-3333"),
+        Profile(name: "Jenna", age: "5", tel: "010-2222-3333"),
+        Profile(name: "Jenna", age: "6", tel: "010-2222-3333"),
+        Profile(name: "Jenna", age: "7", tel: "010-2222-3333"),
+        Profile(name: "Jenna", age: "8", tel: "010-2222-3333"),
+        Profile(name: "iyeah", age: "9", tel: "010-2222-3333"),
+        Profile(name: "SeSaC", age: "30", tel: "010-2222-2222")
     ]
     
     @IBOutlet private weak var tableView: UITableView!
@@ -84,7 +92,7 @@ extension ListProfileViewController: UISearchResultsUpdating {
         searchBar.searchResultsUpdater = self
         searchBar.searchBar.autocapitalizationType = .none
         navigationItem.searchController = searchBar
-        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     func updateSearchResults(for searchController: UISearchController) {
