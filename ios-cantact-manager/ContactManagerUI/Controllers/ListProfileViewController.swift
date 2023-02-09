@@ -84,7 +84,6 @@ extension ListProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else { return }
         let profile = isSearching ? filteredProfiles[indexPath.row] : profiles[indexPath.row]
         contactManageSystem.remove(profile: profile)
         tableView.deleteRows(at: [indexPath], with: .fade)
@@ -92,17 +91,17 @@ extension ListProfileViewController: UITableViewDataSource {
 }
 
 extension ListProfileViewController: UISearchResultsUpdating {
-    func makeSearchBar() {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        filteredProfiles = profiles.filter { $0.name.lowercased() == text.lowercased() }
+        tableView.reloadData()
+    }
+    
+    private func makeSearchBar() {
         let searchBar = UISearchController(searchResultsController: nil)
         searchBar.searchResultsUpdater = self
         searchBar.searchBar.autocapitalizationType = .none
         navigationItem.searchController = searchBar
         navigationItem.hidesSearchBarWhenScrolling = false
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        filteredProfiles = profiles.filter { $0.name.lowercased() == text.lowercased() }
-        tableView.reloadData()
     }
 }
