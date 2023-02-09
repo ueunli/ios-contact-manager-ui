@@ -80,6 +80,15 @@ extension ListProfileViewController: UITableViewDataSource {
 
         return cell
     }
+
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        let profile = isSearching ? filteredProfiles[indexPath.row] : profiles[indexPath.row]
+        contactManageSystem.remove(profile: profile)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
 }
 
 extension ListProfileViewController: UISearchResultsUpdating {
@@ -95,16 +104,5 @@ extension ListProfileViewController: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else { return }
         filteredProfiles = profiles.filter { $0.name.lowercased() == text.lowercased() }
         tableView.reloadData()
-    }
-}
-
-extension ListProfileViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else { return }
-        let profile = isSearching ? filteredProfiles[indexPath.row] : profiles[indexPath.row]
-        contactManageSystem.remove(profile: profile)
-        tableView.deleteRows(at: [indexPath], with: .fade)
     }
 }
