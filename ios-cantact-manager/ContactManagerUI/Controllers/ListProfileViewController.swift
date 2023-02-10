@@ -15,11 +15,11 @@ final class ListProfileViewController: UIViewController, AddProfileViewControlle
             return lhs != rhs ? lhs < rhs : $0.age < $1.age
         }
     }
-    private lazy var filteredProfiles = [Profile]()
+    private lazy var profileSearchResults = [Profile]()
     private var isSearching: Bool {
         let searchBarController = self.navigationItem.searchController
         let isActive = searchBarController?.isActive ?? false
-        let isEmpty = searchBarController?.searchBar.text?.isEmpty ?? false
+        let isEmpty = searchBarController?.searchBar.text?.isEmpty ?? true
         return isActive && !isEmpty
     }
     
@@ -64,11 +64,11 @@ final class ListProfileViewController: UIViewController, AddProfileViewControlle
 
 extension ListProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isSearching ? filteredProfiles.count : profiles.count
+        isSearching ? profileSearchResults.count : profiles.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let profile = isSearching ? filteredProfiles[indexPath.row] : profiles[indexPath.row]
+        let profile = isSearching ? profileSearchResults[indexPath.row] : profiles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
 
@@ -84,7 +84,7 @@ extension ListProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        let profile = isSearching ? filteredProfiles[indexPath.row] : profiles[indexPath.row]
+        let profile = isSearching ? profileSearchResults[indexPath.row] : profiles[indexPath.row]
         contactManageSystem.remove(profile: profile)
         tableView.deleteRows(at: [indexPath], with: .fade)
     }
@@ -92,8 +92,12 @@ extension ListProfileViewController: UITableViewDataSource {
 
 extension ListProfileViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        filteredProfiles = profiles.filter { $0.name.lowercased() == text.lowercased() }
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        profileSearchResults = profiles.filter {
+            $0.name.lowercased() == text.lowercased()
+        }
         tableView.reloadData()
     }
     
