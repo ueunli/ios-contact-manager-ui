@@ -59,6 +59,13 @@ struct ContactManageSystem {
         profiles.insert(profile)
     }
     
+    mutating func sortProfiles() -> [Profile] {
+        profiles.sorted {
+            let (lhs, rhs) = ($0.name.lowercased(), $1.name.lowercased())
+            return lhs != rhs ? lhs < rhs : $0.age < $1.age
+        }
+    }
+    
     private func listUpProfile() {
         OutputManager.print(profiles: profiles)
     }

@@ -10,10 +10,7 @@ import UIKit
 final class ListProfileViewController: UIViewController, AddProfileViewControllerDelegate {
     private var contactManageSystem = ContactManageSystem()
     private var profiles: [Profile] {
-        contactManageSystem.profiles.sorted {
-            let (lhs, rhs) = ($0.name.lowercased(), $1.name.lowercased())
-            return lhs != rhs ? lhs < rhs : $0.age < $1.age
-        }
+        contactManageSystem.sortProfiles()
     }
     private lazy var profileSearchResults = [Profile]()
     private var isSearching: Bool {
